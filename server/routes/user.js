@@ -5,9 +5,9 @@ const user = ('../controllers/user.js');
 const router = express.Router();
 
 router
-  .get('/', user.onGetAllUsers)
+  //.get('/', user.onGetAllUsers)
   .post('/', user.onCreateUser)
-  .get('/:id', user.onGetUserById)
-  .delete('/:id', user.onDeleteUserById)
+  //.get('/:id', user.onGetUserById)
+  //.delete('/:id', user.onDeleteUserById)
 
 module.exports.UserRouter;
