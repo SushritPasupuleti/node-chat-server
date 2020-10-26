@@ -2,6 +2,7 @@ const http = require('http');
 const express = require('express')
 const logger = require("morgan");
 const cors = require("cors");
+const mongo = require('./config/mongo');
 // routes
 const indexRouter = require("./routes/index.js");
 const userRouter = require("./routes/user.js");
