@@ -5,7 +5,7 @@ const UserModel, { USER_TYPES } = require('../models/User.js');
 module.exports = {
     onGetAllUsers: async (req, res) => { },
     onGetUserById: async (req, res) => { },
-    onCreateUser: onCreateUser => { },
+    onCreateUser: onCreateUser(),
     onDeleteUserById: async (req, res) => { },
   }
 
