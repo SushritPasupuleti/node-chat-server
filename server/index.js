@@ -21,10 +21,10 @@ app.use(logger("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
-app.use("/", indexRouter);
-app.use("/users", userRouter);
-app.use("/room", decode, chatRoomRouter);
-app.use("/delete", deleteRouter);
+// app.use("/", indexRouter);
+// app.use("/users", userRouter);
+// app.use("/room", decode, chatRoomRouter);
+// app.use("/delete", deleteRouter);
 
 /** catch 404 and forward to error handler */
 app.use('*', (req, res) => {
