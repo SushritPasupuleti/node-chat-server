@@ -41,4 +41,4 @@ const chatMessageSchema = new mongoose.Schema(
 );
 
 
-module.exports = mongoose.model("Chatmessage", chatRoomSchema);
+module.exports = mongoose.model("Chatmessage", chatMessageSchema);
