@@ -1,8 +1,9 @@
 const jwt = require('jsonwebtoken');
+const { config } = require('./../config/index')
 
 const db = require('./../models/');
 
-const SECRET_KEY = 'some-secret-key';
+const SECRET_KEY = config.jwt.secret;
 
 exports.encode = async (req, res, next) => {
   try {
