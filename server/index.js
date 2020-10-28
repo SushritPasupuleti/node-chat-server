@@ -4,10 +4,7 @@ const logger = require("morgan");
 const cors = require("cors");
 const mongo = require('./config/mongo');
 // routes
-const indexRouter = require("./routes/index.js");
-const userRouter = require("./routes/user.js");
-const chatRoomRouter = require("./routes/chatRoom.js");
-const deleteRouter = require("./routes/delete.js");
+const routes = require('./routes');
 // middlewares
 const { decode } = require('./middlewares/jwt.js');
 
@@ -21,7 +18,7 @@ app.use(logger("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
-// app.use("/", indexRouter);
+app.use("/", routes.defaultRoutes);
 // app.use("/users", userRouter);
 // app.use("/room", decode, chatRoomRouter);
 // app.use("/delete", deleteRouter);
