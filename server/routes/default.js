@@ -1,5 +1,7 @@
 const router = require('express').Router();
 
+const { encode } = require('./../middlewares/jwt');
+
 router
   .post('/login/:userId', encode, (req, res, next) => {
     return res
