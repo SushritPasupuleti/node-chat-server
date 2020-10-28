@@ -3,6 +3,7 @@ const express = require('express')
 const logger = require("morgan");
 const cors = require("cors");
 const mongo = require('./config/mongo');
+const WebSockets = require('./utils/WebSockets');
 // routes
 const routes = require('./routes');
 // middlewares
@@ -35,7 +36,7 @@ app.use('*', (req, res) => {
 const server = http.createServer(app);
 /** Create socket connection */
 global.io = require('socket.io').listen(server);
-//global.io.on('connection', WebSockets.connection)
+global.io.on('connection', WebSockets.connection)
 /** Listen on provided port, on all network interfaces. */
 server.listen(port);
 /** Event listener for HTTP server "listening" event. */
