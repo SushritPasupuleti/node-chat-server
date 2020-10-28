@@ -20,9 +20,9 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 app.use("/", routes.defaultRoutes);
-// app.use("/users", userRouter);
-// app.use("/room", decode, chatRoomRouter);
-// app.use("/delete", deleteRouter);
+app.use("/users", routes.userRoutes);
+app.use("/room", decode, routes.chatRoomRoutes);
+app.use("/delete", routes.deleteRoutes);
 
 /** catch 404 and forward to error handler */
 app.use('*', (req, res) => {
@@ -41,5 +41,5 @@ global.io.on('connection', WebSockets.connection)
 server.listen(port);
 /** Event listener for HTTP server "listening" event. */
 server.on("listening", () => {
-  console.log(`Listening on port:: http://localhost:${port}/`)
+  console.log(`Listening on port:: ${port}/`)
 });
