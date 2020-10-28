@@ -27,6 +27,7 @@ exports.initiate = async (req, res) => {
 }
 
 exports.postMessage = async (req, res) => {
+    console.log("Message Incoming")
     try {
         const { roomId } = req.params;
         const validation = makeValidation(types => ({
