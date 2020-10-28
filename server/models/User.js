@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const { v4: uuidv4 } = require('uuid');
 
-export const USER_TYPES = {
+const USER_TYPES = {
   CONSUMER: "consumer",
   SUPPORT: "support",
 };
@@ -23,3 +23,4 @@ const userSchema = new mongoose.Schema(
 );
 
 module.exports = mongoose.model("User", userSchema);
+module.exports = USER_TYPES;
