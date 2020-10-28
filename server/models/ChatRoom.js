@@ -23,4 +23,3 @@ const chatRoomSchema = new mongoose.Schema(
 );
 
 module.exports = mongoose.model("Chatroom", chatRoomSchema);
-module.exports = CHAT_ROOM_TYPES;
