@@ -36,5 +36,5 @@ class WebSockets {
     }
   }
   
-module.exports = WebSockets();
+module.exports = new WebSockets();
   
