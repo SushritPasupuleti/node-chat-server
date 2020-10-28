@@ -1,10 +1,12 @@
 const router = require('express').Router();
 
+const chatRoom = require('./../handlers/chatRoom');
+
 router
-.get('/', () => {})
-.get('/:roomId', () => {})
-.post('/initiate', () => {})
-.post('/:roomId/message', () => {})
-.put('/:roomId/mark-read', () => {})
+.get('/', chatRoom.getRecentConversation)
+.get('/:roomId', chatRoom.getConversationByRoomId)
+.post('/initiate', chatRoom.initiate)
+.post('/:roomId/message', chatRoom.postMessage)
+.put('/:roomId/mark-read', chatRoom.markConversationReadByRoomId)
 
 module.exports = router;
