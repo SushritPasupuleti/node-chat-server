@@ -3,6 +3,9 @@ const { v4: uuidv4 } = require('uuid');
 
 const MESSAGE_TYPES = {
     TYPE_TEXT: "text",
+    TYPE_IMAGE: "image",
+    TYPE_VIDEO: "video",
+    TYPE_AUDIO: "audio",
 };
 
 const readByRecipientSchema = new mongoose.Schema(
