@@ -41,7 +41,7 @@ exports.postMessage = async (req, res) => {
             messageText: req.body.messageText,
         };
         const currentLoggedUser = req.userId;
-        const post = await ChatMessageModel.createPostInChatRoom(roomId, messagePayload, currentLoggedUser);
+        const post = await db.ChatMessage.createPostInChatRoom(roomId, messagePayload, currentLoggedUser);
         global.io.sockets.in(roomId).emit('new message', { message: post });
         return res.status(200).json({ success: true, post });
     } catch (error) {
@@ -58,7 +58,7 @@ exports.getRecentConversation = async (req, res) => {
         };
         const rooms = await db.ChatRoom.getChatRoomsByUserId(currentLoggedUser);
         const roomIds = rooms.map(room => room._id);
-        const recentConversation = await ChatMessageModel.getRecentConversation(
+        const recentConversation = await db.ChatMessage.getRecentConversation(
             roomIds, options, currentLoggedUser
         );
         return res.status(200).json({ success: true, conversation: recentConversation });
@@ -77,12 +77,12 @@ exports.getConversationByRoomId = async (req, res) => {
                 message: 'No room exists for this id',
             })
         }
-        const users = await UserModel.getUserByIds(room.userIds);
+        const users = await db.User.getUserByIds(room.userIds);
         const options = {
             page: parseInt(req.query.page) || 0,
             limit: parseInt(req.query.limit) || 10,
         };
-        const conversation = await ChatMessageModel.getConversationByRoomId(roomId, options);
+        const conversation = await db.ChatMessage.getConversationByRoomId(roomId, options);
         return res.status(200).json({
             success: true,
             conversation,
@@ -105,7 +105,7 @@ exports.markConversationReadByRoomId = async (req, res) => {
         }
 
         const currentLoggedUser = req.userId;
-        const result = await ChatMessageModel.markMessageRead(roomId, currentLoggedUser);
+        const result = await db.ChatMessage.markMessageRead(roomId, currentLoggedUser);
         return res.status(200).json({ success: true, data: result });
     } catch (error) {
         console.log(error);
