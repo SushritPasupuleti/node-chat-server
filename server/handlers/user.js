@@ -1,10 +1,10 @@
 const makeValidation = require('@withvoid/make-validation');
 
-const { User, USER_TYPES } = require('./../models/');
+const db = require('./../models/');
 
 exports.onGetAllUsers = async (req, res) => {
     try {
-        const users = await UserModel.getUsers();
+        const users = await db.User.getUsers();
         return res.status(200).json({ success: true, users });
     } catch (error) {
         return res.status(500).json({ success: false, error: error })
@@ -13,7 +13,7 @@ exports.onGetAllUsers = async (req, res) => {
 
 exports.onGetUserById = async (req, res) => {
     try {
-        const user = await UserModel.getUserById(req.params.id);
+        const user = await User.getUserById(req.params.id);
         return res.status(200).json({ success: true, user });
     } catch (error) {
         return res.status(500).json({ success: false, error: error })
@@ -27,13 +27,13 @@ exports.onCreateUser = async (req, res) => {
             checks: {
                 firstName: { type: types.string },
                 lastName: { type: types.string },
-                type: { type: types.enum, options: { enum: USER_TYPES } },
+                type: { type: types.enum, options: { enum: db.USER_TYPES } },
             }
         }));
         if (!validation.success) return res.status(400).json({ ...validation });
 
         const { firstName, lastName, type } = req.body;
-        const user = await UserModel.createUser(firstName, lastName, type);
+        const user = await User.createUser(firstName, lastName, type);
         return res.status(200).json({ success: true, user });
     } catch (error) {
         return res.status(500).json({ success: false, error: error })
@@ -42,7 +42,7 @@ exports.onCreateUser = async (req, res) => {
 
 exports.onDeleteUserById = async (req, res) => {
     try {
-        const user = await UserModel.deleteByUserById(req.params.id);
+        const user = await User.deleteByUserById(req.params.id);
         return res.status(200).json({
             success: true,
             message: `Deleted a count of ${user.deletedCount} user.`

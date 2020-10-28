@@ -1,7 +1,9 @@
 const router = require('express').Router();
 
+const user = require('./../handlers/user');
+
 router
-    .get('/', () => { })
+    .get('/', user.onGetAllUsers)
     .post('/', () => { })
     .get('/:id', () => { })
     .delete('/:id', () => { })
