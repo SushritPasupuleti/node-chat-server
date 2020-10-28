@@ -14,3 +14,12 @@
     - [ ] Images
 
     - [ ] Gifs
+
+
+## Note
+
+Current version simply accepts the userId (generated with UUIDv4) to authenticate the user. This should be replaced with a different authentication system like:
+
+- Passport
+
+- OAuth
