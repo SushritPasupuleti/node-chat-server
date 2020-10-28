@@ -23,3 +23,5 @@ Current version simply accepts the userId (generated with UUIDv4) to authenticat
 - Passport
 
 - OAuth
+
+The JWT secret, mongo configs can be found in `/server/config`
