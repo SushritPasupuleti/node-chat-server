@@ -1,0 +1,1 @@
+module.exports.defaultRoutes = require('./default');
